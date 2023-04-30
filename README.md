@@ -4,7 +4,7 @@ This Api has been made Crypto Payments based on USDT.TRC20
 # Install with composer 
 > composer require capitalpayments/sdk:dev-main
 
-# Login with API 
+# Login 
 
 ```
 <?php 
@@ -14,5 +14,63 @@ include __DIR__ . "/../vendor/autoload.php";
 $Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
 
 $response = $Sdk->getBalance();
+
+```
+
+# Get balance
+
+```
+<?php 
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
+
+# get the balance from the api
+$response = $Sdk->getBalance();
+
+```
+# Get main wallet
+
+```
+<?php 
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
+
+# get main wallet data (private key is included)
+$response = $Sdk->getMainWallet();
+
+
+```
+# Get wallets
+
+```
+<?php 
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
+
+# retrives all wallets attached to api 
+$response = $Sdk->getWallets();
+
+
+```
+# Get ivnoice status
+
+```
+<?php 
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
+
+# get the invoice status
+$response = $Sdk->getInvoiceStatus([
+    'invoice_id' => 'invoice_id' # string 
+]);
+
 
 ```
