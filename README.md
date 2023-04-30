@@ -1,11 +1,13 @@
 # CapitalPayments
 This Api has been made Crypto Payments based on USDT.TRC20
+All examples are available into examples/ folder.
 
 # Install with composer 
 > composer require capitalpayments/sdk:dev-main
 
-All examples are available into examples/ folder.
-
+1. Create an account [Create account](capitalpayments.me/apps/signup "Create account")
+2. Create api key [here](https://www.capitalpayments.co/apps/api/ "here")
+3. Follow next steps to connect your account
 # Login 
 
 ```
