@@ -8,6 +8,9 @@ All examples are available into examples/ folder.
 1. Create an account [Create account](capitalpayments.me/apps/signup "Create account")
 2. Create api key [here](https://www.capitalpayments.co/apps/api/ "here")
 3. Follow next steps to connect your account
+
+(NOTE: Sandbox mode needs test coins request [here](https://www.capitalpayments.co/apps/api/ "here"))
+
 # Login 
 
 ```
