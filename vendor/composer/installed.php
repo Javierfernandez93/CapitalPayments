@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'capitalpayments/sdk',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => NULL,
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'reference' => 'fae3abac925d29a919d5cdba40d691d14d126f58',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,23 +11,21 @@
     ),
     'versions' => array(
         'capitalpayments/sdk' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => NULL,
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => 'fae3abac925d29a919d5cdba40d691d14d126f58',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'guzzlehttp/guzzle' => array(
-            'pretty_version' => 'dev-master',
-            'version' => 'dev-master',
-            'reference' => 'd456dff12498d2b778d62bba83d902225c5f1e6d',
+            'pretty_version' => '7.5.x-dev',
+            'version' => '7.5.9999999.9999999-dev',
+            'reference' => '255d7157b463ee2d9b3cbf891eda2691baa43076',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/guzzle',
-            'aliases' => array(
-                0 => '9999999-dev',
-            ),
+            'aliases' => array(),
             'dev_requirement' => false,
         ),
         'guzzlehttp/promises' => array(

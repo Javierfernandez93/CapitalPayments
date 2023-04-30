@@ -1,4 +1,2 @@
-# CapitalPaymentsSdk
+# CapitalPayments
 For APi Payments
-
-composer require capitalpayments/sdk
