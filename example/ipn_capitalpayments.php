@@ -1,4 +1,4 @@
-<?php define("TO_ROOT", "../../");
+<?php
 
 $api_key = 'api_key';
 $ipn_secret = 'ipn_secret';
