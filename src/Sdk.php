@@ -86,27 +86,51 @@ class Sdk {
 
     public function getInvoiceStatus(array $data = null) : array
     {
-        $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
-
-        $response = $Client->post(UrlManager::GET_BALANCE, [
-            RequestOptions::JSON => $data
-        ]);
-
-        if($response->getStatusCode() == 200) 
+        if(isset($data['invoice_id'])) 
         {
-            return json_decode($response->getBody()->getContents(),true);
-        }
+            $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
 
-        return [];
+            $response = $Client->post(UrlManager::GET_INVOICE_STATUS, [
+                RequestOptions::JSON => $data
+            ]);
+
+            if($response->getStatusCode() == 200) 
+            {
+                return json_decode($response->getBody()->getContents(),true);
+            }
+
+            return [];
+        } else {
+            throw new Exception('Not invoice id');
+        }
     }
     
-    public function getMainWallet(array $data = null) : array
+    public function cancelInvoice(array $data = null) : array
+    {
+        if(isset($data['invoice_id'])) 
+        {
+            $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+
+            $response = $Client->post(UrlManager::CANCEL_INVOICE, [
+                RequestOptions::JSON => $data
+            ]);
+
+            if($response->getStatusCode() == 200) 
+            {
+                return json_decode($response->getBody()->getContents(),true);
+            }
+
+            return [];
+        } else {
+            throw new Exception('Not invoice id');
+        }
+    }
+    
+    public function getAccount() : array
     {
         $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
 
-        $response = $Client->post(UrlManager::GET_MAIN_WALLET, [
-            RequestOptions::JSON => $data
-        ]);
+        $response = $Client->get(UrlManager::GET_ACCOUNT);
 
         if($response->getStatusCode() == 200) 
         {
@@ -116,7 +140,21 @@ class Sdk {
         return [];
     }
     
-    public function getWallets(array $data = null) : array
+    public function getMainWallet() : array
+    {
+        $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+
+        $response = $Client->get(UrlManager::GET_MAIN_WALLET);
+
+        if($response->getStatusCode() == 200) 
+        {
+            return json_decode($response->getBody()->getContents(),true);
+        }
+
+        return [];
+    }
+    
+    public function getWallets() : array
     {
         $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
 
@@ -130,7 +168,7 @@ class Sdk {
         return [];
     }
 
-    public function getEnvironment(array $data = null) : array
+    public function getEnvironment() : array
     {
         $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
 
@@ -142,5 +180,78 @@ class Sdk {
         }
 
         return [];
+    }
+
+    public function createPayout(array $data = null) : array
+    {
+        if(isset($data['amount'])) 
+        {
+            if(is_numeric($data['amount'])) 
+            {
+                if(isset($data['address']))
+                {
+                    $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+    
+                    $response = $Client->post(UrlManager::CREATE_PAYOUT, [
+                        RequestOptions::JSON => $data
+                    ]);
+    
+                    if($response->getStatusCode() == 200) 
+                    {
+                        return json_decode($response->getBody()->getContents(),true);
+                    }
+    
+                    return [];
+                } else {
+                    throw new Exception('Invalid address');
+                }
+            } else {
+                throw new Exception('Invalid amount format');
+            }
+        } else {
+            throw new Exception('Invalid amount');
+        }
+    }
+
+    public function getPayoutStatus(array $data = null) : array
+    {
+        if(isset($data['payout_id'])) 
+        {
+            $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+
+            $response = $Client->post(UrlManager::GET_PAYOUT_STATUS, [
+                RequestOptions::JSON => $data
+            ]);
+
+            if($response->getStatusCode() == 200) 
+            {
+                return json_decode($response->getBody()->getContents(),true);
+            }
+
+            return [];
+        } else {
+            throw new Exception('Not payout id');
+        }
+    }
+    
+    public function cancelPayout(array $data = null) : array
+    {
+        if(isset($data['payout_id'])) 
+        {
+            $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+
+            $response = $Client->post(UrlManager::CANCEL_PAYOUT, [
+                RequestOptions::JSON => $data
+            ]);
+
+            if($response->getStatusCode() == 200) 
+            {
+                return json_decode($response->getBody()->getContents(),true);
+            }
+
+            return [];
+        } else {
+            throw new Exception('Not payout id');
+        }
     }
 }
