@@ -6,5 +6,5 @@ $Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
 
 # cancel invoice  
 $response = $Sdk->cancelInvoice([
-    'payout_id' => 'PayoutId', # @string
+    'invoice_id' => 'InvoiceId', # @string
 ]);
