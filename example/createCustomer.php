@@ -8,5 +8,6 @@ $Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
 $response = $Sdk->createCustomer([
     'name' => 'name', # @string
     'email' => 'email', # @string
+    'address' => 'USDT.TRC20WalletAddress', # string
     'whatsapp' => 'whatsapp', # @string
 ]);
