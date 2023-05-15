@@ -68,6 +68,22 @@ class Sdk {
         }
     }
     
+    public function createInvoices(array $data = null) : array
+    {
+        $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+
+        $response = $Client->post(UrlManager::CREATE_INVOICES, [
+            RequestOptions::JSON => $data
+        ]);
+
+        if($response->getStatusCode() == 200) 
+        {
+            return json_decode($response->getBody()->getContents(),true);
+        }
+
+        return [];
+    }
+    
     public function getBalance(array $data = null) : array
     {
         $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
@@ -212,6 +228,84 @@ class Sdk {
             throw new Exception('Invalid amount');
         }
     }
+    
+    public function createPayouts(array $data = null) : array
+    {
+        $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+
+        $response = $Client->post(UrlManager::CREATE_PAYOUTS, [
+            RequestOptions::JSON => $data
+        ]);
+
+        if($response->getStatusCode() == 200) 
+        {
+            return json_decode($response->getBody()->getContents(),true);
+        }
+
+        return [];
+    }
+    
+    public function createCustomer(array $data = null) : array
+    {
+        if(isset($data['name'])) 
+        {
+            if(isset($data['email'])) 
+            {
+                if(isset($data['whatsapp']))
+                {
+                    $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+    
+                    $response = $Client->post(UrlManager::CREATE_CUSTOMER, [
+                        RequestOptions::JSON => $data
+                    ]);
+    
+                    if($response->getStatusCode() == 200) 
+                    {
+                        return json_decode($response->getBody()->getContents(),true);
+                    }
+    
+                    return [];
+                } else {
+                    throw new Exception('Invalid whatsapp');
+                }
+            } else {
+                throw new Exception('Invalid email');
+            }
+        } else {
+            throw new Exception('Invalid name');
+        }
+    }
+    
+    public function createItem(array $data = null) : array
+    {
+        if(isset($data['title'])) 
+        {
+            if(isset($data['description'])) 
+            {
+                if(isset($data['price']))
+                {
+                    $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+    
+                    $response = $Client->post(UrlManager::CREATE_ITEM, [
+                        RequestOptions::JSON => $data
+                    ]);
+    
+                    if($response->getStatusCode() == 200) 
+                    {
+                        return json_decode($response->getBody()->getContents(),true);
+                    }
+    
+                    return [];
+                } else {
+                    throw new Exception('Invalid price');
+                }
+            } else {
+                throw new Exception('Invalid description');
+            }
+        } else {
+            throw new Exception('Invalid title');
+        }
+    }
 
     public function getPayoutStatus(array $data = null) : array
     {
@@ -233,7 +327,81 @@ class Sdk {
             throw new Exception('Not payout id');
         }
     }
-    
+
+    public function getCustomer(array $data = null) : array
+    {
+        if(isset($data['customer_id'])) 
+        {
+            $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+
+            $response = $Client->post(UrlManager::GET_CUSTOMER, [
+                RequestOptions::JSON => $data
+            ]);
+
+            if($response->getStatusCode() == 200) 
+            {
+                return json_decode($response->getBody()->getContents(),true);
+            }
+
+            return [];
+        } else {
+            throw new Exception('Not customer id');
+        }
+    }
+
+    public function getCustomers(array $data = null) : array
+    {
+        $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+
+        $response = $Client->post(UrlManager::GET_CUSTOMERS, [
+            RequestOptions::JSON => $data
+        ]);
+
+        if($response->getStatusCode() == 200) 
+        {
+            return json_decode($response->getBody()->getContents(),true);
+        }
+
+        return [];
+    }
+
+    public function getItem(array $data = null) : array
+    {
+        if(isset($data['item_id'])) 
+        {
+            $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+
+            $response = $Client->post(UrlManager::GET_ITEM, [
+                RequestOptions::JSON => $data
+            ]);
+
+            if($response->getStatusCode() == 200) 
+            {
+                return json_decode($response->getBody()->getContents(),true);
+            }
+
+            return [];
+        } else {
+            throw new Exception('Not item id');
+        }
+    }
+
+    public function getItems(array $data = null) : array
+    {
+        $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+
+        $response = $Client->post(UrlManager::GET_ITEMS, [
+            RequestOptions::JSON => $data
+        ]);
+
+        if($response->getStatusCode() == 200) 
+        {
+            return json_decode($response->getBody()->getContents(),true);
+        }
+
+        return [];
+    }
+
     public function cancelPayout(array $data = null) : array
     {
         if(isset($data['payout_id'])) 
@@ -252,6 +420,48 @@ class Sdk {
             return [];
         } else {
             throw new Exception('Not payout id');
+        }
+    }
+   
+    public function deleteItem(array $data = null) : array
+    {
+        if(isset($data['item_id'])) 
+        {
+            $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+
+            $response = $Client->post(UrlManager::DELETE_ITEM, [
+                RequestOptions::JSON => $data
+            ]);
+
+            if($response->getStatusCode() == 200) 
+            {
+                return json_decode($response->getBody()->getContents(),true);
+            }
+
+            return [];
+        } else {
+            throw new Exception('Not item id');
+        }
+    }
+    
+    public function deleteCustomer(array $data = null) : array
+    {
+        if(isset($data['customer_id'])) 
+        {
+            $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+
+            $response = $Client->post(UrlManager::DELETE_CUSTOMER, [
+                RequestOptions::JSON => $data
+            ]);
+
+            if($response->getStatusCode() == 200) 
+            {
+                return json_decode($response->getBody()->getContents(),true);
+            }
+
+            return [];
+        } else {
+            throw new Exception('Not customer id');
         }
     }
 }
