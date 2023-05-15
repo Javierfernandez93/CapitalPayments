@@ -93,7 +93,44 @@ $Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
 $response = $Sdk->getWallets();
 
 ```
+# Create invoice
 
+```
+<?php 
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
+
+# retrieve the invoice data
+$response = $Sdk->createInvoice([
+    'invoice_id' => 'invoice_id' # string 
+    'amount' => 'amount' # float|int 
+]);
+
+```
+# Create invoices
+
+```
+<?php 
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
+
+# retrieve the invoices data
+$response = $Sdk->createInvoices([
+    [
+        'invoice_id' => 'invoice_id' # string 
+        'amount' => 'amount' # float|int 
+    ],
+    [
+        'invoice_id' => 'invoice_id' # string 
+        'amount' => 'amount' # float|int 
+    ]
+]);
+
+```
 # Get invoice status
 
 ```
@@ -135,10 +172,36 @@ include __DIR__ . "/../vendor/autoload.php";
 
 $Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
 
-# get the invoice status
+# retrieve the payout data
 $response = $Sdk->createPayout([
     'payout_id' => 'payout_id' # string 
     'amount' => 'amount' # float|int 
+    'address' => 'USDT.TRC20WalletAddress' # string
+]);
+
+```
+
+# Create payouts
+
+```
+<?php 
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
+
+# retrieve the payouts data
+$response = $Sdk->createPayouts([
+    [
+        'payout_id' => 'payout_id' # string 
+        'amount' => 'amount' # float|int 
+        'address' => 'USDT.TRC20WalletAddress' # string
+    ],
+    [
+        'payout_id' => 'payout_id' # string 
+        'amount' => 'amount' # float|int 
+        'address' => 'USDT.TRC20WalletAddress' # string
+    ]
 ]);
 
 ```
@@ -172,5 +235,130 @@ $Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
 $response = $Sdk->cancelPayout([
     'payout_id' => 'PayoutId', # @string
 ]);
+
+```
+
+# Create item
+
+```
+<?php 
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
+
+# retrieve the item data
+$response = $Sdk->createItem([
+    'title' => 'title' # string 
+    'description' => 'description' # float|int 
+    'price' => 'price' # string
+]);
+
+```
+# Get item
+
+```
+<?php 
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
+
+# retrieve the item data
+$response = $Sdk->getItem([
+    'item_id' => 'item_id' # string 
+]);
+
+```
+# Get items
+
+```
+<?php 
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
+
+# retrieve the items data
+$response = $Sdk->getItems();
+
+```
+# Delete item
+
+```
+<?php 
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
+
+# 
+$response = $Sdk->deleteItem([
+    'item_id' => 'item_id' # string 
+]);
+
+
+```
+
+# Create customer
+
+```
+<?php 
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
+
+# retrieve the customer data
+$response = $Sdk->createCustomer([
+    'name' => 'name' # string 
+    'email' => 'email' # float|int 
+    'whatsapp' => 'whatsapp' # float|int 
+    'address' => 'address' # string
+]);
+
+```
+# Get customer
+
+```
+<?php 
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
+
+# retrieve the customer data
+$response = $Sdk->getCustomer([
+    'customer_id' => 'customer_id' # string 
+]);
+
+```
+# Get customers
+
+```
+<?php 
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
+
+#
+$response = $Sdk->getCustomers();
+
+```
+# Delete customer
+
+```
+<?php 
+
+include __DIR__ . "/../vendor/autoload.php";
+
+$Sdk = new CapitalPayments\Sdk\Sdk('api_key','api_secret');
+
+# 
+$response = $Sdk->deleteCustomer([
+    'customer_id' => 'customer_id' # string 
+]);
+
 
 ```
