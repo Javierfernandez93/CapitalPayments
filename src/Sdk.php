@@ -73,7 +73,7 @@ class Sdk {
         $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
 
         $response = $Client->post(UrlManager::CREATE_INVOICES, [
-            RequestOptions::JSON => $data
+            RequestOptions::JSON => ['invoices' => $data]
         ]);
 
         if($response->getStatusCode() == 200) 
@@ -234,7 +234,7 @@ class Sdk {
         $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
 
         $response = $Client->post(UrlManager::CREATE_PAYOUTS, [
-            RequestOptions::JSON => $data
+            RequestOptions::JSON => ['payouts' => $data]
         ]);
 
         if($response->getStatusCode() == 200) 
