@@ -485,4 +485,25 @@ class Sdk {
             throw new Exception('Not customer id');
         }
     }
+
+    public function setDepositWallet(array $data = null) : array
+    {
+        if(isset($data['address'])) 
+        {
+            $Client = new Client(['verify' => true, 'auth' => [$this->api_key, $this->api_secret]]);
+
+            $response = $Client->post(UrlManager::SET_DEPOSIT_WALLET, [
+                RequestOptions::JSON => $data
+            ]);
+
+            if($response->getStatusCode() == 200) 
+            {
+                return json_decode($response->getBody()->getContents(),true);
+            }
+
+            return [];
+        } else {
+            throw new Exception('Not customer id');
+        }
+    }
 }

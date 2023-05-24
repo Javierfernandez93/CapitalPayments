@@ -7,6 +7,7 @@ class UrlManager {
     const GET_ENVIRONMENT = 'https://www.capitalpayments.me/app/api/getEnvironment';
     const GET_ACCOUNT = 'https://www.capitalpayments.me/app/api/getAccount';
     const LOGIN = 'https://www.capitalpayments.me/app/api/login';
+    const SET_DEPOSIT_WALLET = 'https://www.capitalpayments.me/app/api/setDepositWallet';
 
     // invoices
     const CREATE_INVOICE = 'https://www.capitalpayments.me/app/api/createInvoice';
