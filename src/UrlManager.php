@@ -19,6 +19,7 @@ class UrlManager {
     const CREATE_PAYOUTS = 'https://www.capitalpayments.me/app/api/createPayouts';
     const GET_PAYOUT_STATUS = 'https://www.capitalpayments.me/app/api/getPayoutStatus';
     const CANCEL_PAYOUT = 'https://www.capitalpayments.me/app/api/cancelPayout';
+    const SET_INVOICE_AS_PAYED = 'https://www.capitalpayments.me/app/api/setTestInvoiceAsPayed';
 
     // wallet
     const GET_BALANCE = 'https://www.capitalpayments.me/app/api/getBalance';
